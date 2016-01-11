@@ -8,127 +8,59 @@
                         margin: 5px auto;
                   }
                   .cell{
-                        width: 5%;
-                        height: 5%;
+                        margin: auto;
                         text-align: center;
+                  }
+                  #juego{
+                        width: 50%;
+                        margin: 10px auto;
+                  }
+                  /*
+                  * http://jsfiddle.net/webtiki/MpXYr/3/embedded/result/
+                  */
+                  .square {
+                      float:left;
+                      position: relative;
+                      width: 30%;
+                      margin:1.66%;
+                  }
+                  .little-square {
+                      float:left;
+                      position: relative;
+                      width: 30%;
+                      padding-bottom : 15%; /* = width for a 1:1 aspect ratio */
                   }
             </style>
             <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
             <script src="sudoku.js"></script>
+            <script type="text/javascript">
+                  var init = function(){
+                        var juego = $('#juego');
+                        for(var i = 0; i < 3; i++){
+                              for(var j = 0; j < 3; j++){
+                                    var bloque = $('<span class="bloque square">');
+                                    for(var k = 0; k < 3; k++){
+                                          for(var l = 0; l < 3; l++){
+                                                // casilla + 3 * bloque + 9 * linea + 27 * fila
+                                                var numero = l + 3 * j + 9 * k + 27 * i;
+                                                var casilla = $('<input class="cell little-square" id="' + numero + '" type="number" min="0" max="9" value="0">');
+                                                bloque.append(casilla);
+                                          }
+                                    }
+                                    juego.append(bloque);
+                              }
+                        }
+                  }
+                  $(document).ready(init);
+            </script>
       </head>
       <body>
             <h1>Sudoku solver</h1>
-            <input class="cell" id="0" type="number" min="0" max="9" value="0">
-            <input class="cell" id="1" type="number" min="0" max="9" value="0">
-            <input class="cell" id="2" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <input class="cell" id="3" type="number" min="0" max="9" value="0">
-            <input class="cell" id="4" type="number" min="0" max="9" value="0">
-            <input class="cell" id="5" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <input class="cell" id="6" type="number" min="0" max="9" value="0">
-            <input class="cell" id="7" type="number" min="0" max="9" value="0">
-            <input class="cell" id="8" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-            <br>
-            <input class="cell" id="9" type="number" min="0" max="9" value="0">
-            <input class="cell" id="10" type="number" min="0" max="9" value="0">
-            <input class="cell" id="11" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <input class="cell" id="12" type="number" min="0" max="9" value="0">
-            <input class="cell" id="13" type="number" min="0" max="9" value="0">
-            <input class="cell" id="14" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <input class="cell" id="15" type="number" min="0" max="9" value="0">
-            <input class="cell" id="16" type="number" min="0" max="9" value="0">
-            <input class="cell" id="17" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-            <br>
-            <input class="cell" id="18" type="number" min="0" max="9" value="0">
-            <input class="cell" id="19" type="number" min="0" max="9" value="0">
-            <input class="cell" id="20" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <input class="cell" id="21" type="number" min="0" max="9" value="0">
-            <input class="cell" id="22" type="number" min="0" max="9" value="0">
-            <input class="cell" id="23" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <input class="cell" id="24" type="number" min="0" max="9" value="0">
-            <input class="cell" id="25" type="number" min="0" max="9" value="0">
-            <input class="cell" id="26" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-            <br><br>
-            <input class="cell" id="27" type="number" min="0" max="9" value="0">
-            <input class="cell" id="28" type="number" min="0" max="9" value="0">
-            <input class="cell" id="29" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <input class="cell" id="30" type="number" min="0" max="9" value="0">
-            <input class="cell" id="31" type="number" min="0" max="9" value="0">
-            <input class="cell" id="32" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <input class="cell" id="33" type="number" min="0" max="9" value="0">
-            <input class="cell" id="34" type="number" min="0" max="9" value="0">
-            <input class="cell" id="35" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-            <br>
-            <input class="cell" id="36" type="number" min="0" max="9" value="0">
-            <input class="cell" id="37" type="number" min="0" max="9" value="0">
-            <input class="cell" id="38" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <input class="cell" id="39" type="number" min="0" max="9" value="0">
-            <input class="cell" id="40" type="number" min="0" max="9" value="0">
-            <input class="cell" id="41" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <input class="cell" id="42" type="number" min="0" max="9" value="0">
-            <input class="cell" id="43" type="number" min="0" max="9" value="0">
-            <input class="cell" id="44" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-            <br>
-            <input class="cell" id="45" type="number" min="0" max="9" value="0">
-            <input class="cell" id="46" type="number" min="0" max="9" value="0">
-            <input class="cell" id="47" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <input class="cell" id="48" type="number" min="0" max="9" value="0">
-            <input class="cell" id="49" type="number" min="0" max="9" value="0">
-            <input class="cell" id="50" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <input class="cell" id="51" type="number" min="0" max="9" value="0">
-            <input class="cell" id="52" type="number" min="0" max="9" value="0">
-            <input class="cell" id="53" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-            <br><br>
-            <input class="cell" id="54" type="number" min="0" max="9" value="0">
-            <input class="cell" id="55" type="number" min="0" max="9" value="0">
-            <input class="cell" id="56" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <input class="cell" id="57" type="number" min="0" max="9" value="0">
-            <input class="cell" id="58" type="number" min="0" max="9" value="0">
-            <input class="cell" id="59" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <input class="cell" id="60" type="number" min="0" max="9" value="0">
-            <input class="cell" id="61" type="number" min="0" max="9" value="0">
-            <input class="cell" id="62" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-            <br>
-            <input class="cell" id="63" type="number" min="0" max="9" value="0">
-            <input class="cell" id="64" type="number" min="0" max="9" value="0">
-            <input class="cell" id="65" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <input class="cell" id="66" type="number" min="0" max="9" value="0">
-            <input class="cell" id="67" type="number" min="0" max="9" value="0">
-            <input class="cell" id="68" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <input class="cell" id="69" type="number" min="0" max="9" value="0">
-            <input class="cell" id="70" type="number" min="0" max="9" value="0">
-            <input class="cell" id="71" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-            <br>
-            <input class="cell" id="72" type="number" min="0" max="9" value="0">
-            <input class="cell" id="73" type="number" min="0" max="9" value="0">
-            <input class="cell" id="74" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <input class="cell" id="75" type="number" min="0" max="9" value="0">
-            <input class="cell" id="76" type="number" min="0" max="9" value="0">
-            <input class="cell" id="77" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <input class="cell" id="78" type="number" min="0" max="9" value="0">
-            <input class="cell" id="79" type="number" min="0" max="9" value="0">
-            <input class="cell" id="80" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
-
-            <br><br>
-
-            <button id="solve" onclick="main()">Resolver</button>
-            <button id="clear" onclick="limpia()">Limpiar</button>
+            <div id="juego" class="row"></div>
+            <span class="row">
+                  <button id="solve" class="col-md-6" onclick="main()">Resolver</button>
+                  <button id="clear" class="col-md-6" onclick="limpia()">Limpiar</button>
+            </span>
       </body>
 </html>
