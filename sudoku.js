@@ -10,14 +10,7 @@ var sudoku = [
 			0, 0, 0, 0, 0, 0, 0, 0, 0
 		];
 
-function imprime(){
-      $('.cell').each(function(){
-            $(this).val(sudoku[$(this).attr('id')]);
-      });
-}
-
 function bt(i){
-      imprime();
       if(compruebaTodo() == 1){
             return 1;
       }
@@ -119,10 +112,24 @@ function comprueba(i){
       }
 }
 
-function sudokuMain(){
+function imprime(){
+      $('.cell').each(function(){
+            $(this).val(sudoku[$(this).attr('id')]);
+      });
+}
+
+function limpia(){
+      $('.cell').each(function(index){
+            sudoku[$(this).attr('id')] = 0;
+            $(this).val(0);
+      });
+}
+
+function main(){
       $('.cell').each(function(){
             sudoku[$(this).attr('id')] = $(this).val();
       });
-      if(bt(0) == 1)
+      if(bt(0) == 1){
             imprime();
+      }
 }

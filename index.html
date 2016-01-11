@@ -12,15 +12,6 @@
             </style>
             <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
             <script src="sudoku.js"></script>
-            <script type="text/javascript">
-                  var main = function(){
-                        /*$('.cell').each(function(){
-                              if($(this).attr('id')%3  == 2)
-                                    $(this).css('margin-right', '20px');
-                        });*/
-                  };
-                  $(document).ready(main);
-            </script>
       </head>
       <body>
             <input class="cell" id="0" type="number" min="0" max="9" value="0">
@@ -133,6 +124,7 @@
 
             <br>
 
-            <button id="solve" onclick="sudokuMain()">Resolver</button>
+            <button id="solve" onclick="main()">Resolver</button>
+            <button id="clear" onclick="limpia()">Limpiar</button>
       </body>
 </html>
