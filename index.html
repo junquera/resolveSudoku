@@ -1,6 +1,9 @@
 <html>
       <head>
             <style type="text/css">
+                  body{
+                        text-align: center;
+                  }
                   #solve{
                         margin: 5px auto;
                   }
@@ -14,6 +17,7 @@
             <script src="sudoku.js"></script>
       </head>
       <body>
+            <h1>Sudoku solver</h1>
             <input class="cell" id="0" type="number" min="0" max="9" value="0">
             <input class="cell" id="1" type="number" min="0" max="9" value="0">
             <input class="cell" id="2" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
@@ -122,7 +126,7 @@
             <input class="cell" id="79" type="number" min="0" max="9" value="0">
             <input class="cell" id="80" type="number" min="0" max="9" value="0" style="margin-right: 20px;">
 
-            <br>
+            <br><br>
 
             <button id="solve" onclick="main()">Resolver</button>
             <button id="clear" onclick="limpia()">Limpiar</button>
