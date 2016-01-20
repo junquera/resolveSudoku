@@ -1,0 +1,31 @@
+body{
+      text-align: center;
+}
+
+.cell{
+      margin: auto;
+      text-align: center;
+}
+#juego{
+      width: 50%;
+      margin: 10px auto;
+      display: table;
+}
+
+/* http://jsfiddle.net/webtiki/MpXYr/3/embedded/result/ */
+.square {
+    float:left;
+    position: relative;
+    width: 30%;
+    margin:1.66%;
+}
+.little-square {
+    float:left;
+    position: relative;
+    width: 30%;
+    padding-bottom : 15%; /* = width for a 1:1 aspect ratio */
+}
+
+#menu{
+      display: block;
+}

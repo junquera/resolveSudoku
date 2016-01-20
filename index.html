@@ -1,41 +1,29 @@
-<html>
+<!--
+Copyright 2016 Javier Junquera Sánchez
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License
+-->
+<html lang="es">
       <head>
-            <style type="text/css">
-                  body{
-                        text-align: center;
-                  }
-                  button{
-                        margin: 5px auto;
-                  }
-                  .cell{
-                        margin: auto;
-                        text-align: center;
-                  }
-                  #juego{
-                        width: 50%;
-                        margin: 10px auto;
-                  }
-                  /*
-                  * http://jsfiddle.net/webtiki/MpXYr/3/embedded/result/
-                  */
-                  .square {
-                      float:left;
-                      position: relative;
-                      width: 30%;
-                      margin:1.66%;
-                  }
-                  .little-square {
-                      float:left;
-                      position: relative;
-                      width: 30%;
-                      padding-bottom : 15%; /* = width for a 1:1 aspect ratio */
-                  }
-            </style>
-            <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-            <script src="sudoku.js"></script>
+            <link rel="stylesheet" type="text/css" href="resources/css/default.css">
+            <script src="lib/jquery-2.2.0.min.js"></script>
+            <script src="resources/js/sudoku.js"></script>
+
             <script type="text/javascript">
                   var init = function(){
+                        document.addEventListener('keydown', function(event) {
+                            $('#kp').text(event.keyCode);
+                        });
                         var juego = $('#juego');
                         for(var i = 0; i < 3; i++){
                               for(var j = 0; j < 3; j++){
@@ -52,15 +40,37 @@
                               }
                         }
                   }
+                  function resolver(){
+                        var tiempo = new Date().getTime();
+                        main();
+                        $('#t').text(imprimeTiempo(new Date().getTime() - tiempo));
+                  }
+                  function limpiar(){
+                        limpia();
+                        $('#t').text('');
+                  }
+                  function imprimeTiempo(tiempo){
+
+                        // Hours part from the timestamp
+                        var hours = parseInt(tiempo / (1000 * 60 * 60));
+                        // Minutes part from the timestamp
+                        var minutes = "0" + parseInt(tiempo/ (1000 * 60) - hours*60);
+                        // Seconds part from the timestamp
+                        var seconds = "0" + parseInt(tiempo/ (1000) - minutes*60);
+
+                        // Will display time in 10:30:23 format
+                        var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+                        return formattedTime;
+                  }
                   $(document).ready(init);
             </script>
       </head>
       <body>
             <h1>Sudoku solver</h1>
-            <div id="juego" class="row"></div>
-            <span class="row">
-                  <button id="solve" class="col-md-6" onclick="main()">Resolver</button>
-                  <button id="clear" class="col-md-6" onclick="limpia()">Limpiar</button>
-            </span>
+            <div id="juego"></div>
+            <div id="menu">
+                  <button id="solve" onclick="resolver()">Resolver</button>
+                  <button id="clear" onclick="limpiar()">Limpiar</button>
+            </div>
       </body>
 </html>
